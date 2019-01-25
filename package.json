@@ -1,0 +1,26 @@
+{
+  "name": "clovaJS",
+  "version": "0.1.0",
+  "description": "Naver Line Clova reqest & response module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunaStratos/clovaJS.git"
+  },
+  "keywords": [
+    "clova",
+    "smart speaker",
+    "naver",
+    "line"
+  ],
+  "author": "LunaStratos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lunaStratos/clovaJS/issues"
+  },
+  "engines": { "node": ">= 6.0.0" },
+  "homepage": "https://github.com/lunaStratos/clovaJS#readme"
+}
