@@ -1,5 +1,7 @@
 
-
+/*
+for Slots get module
+ */
 module.exports = function (valueName, req) {
 
   let value = '';

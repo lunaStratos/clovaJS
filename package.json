@@ -1,7 +1,7 @@
 {
   "name": "clovaJS",
   "version": "0.1.0",
-  "description": "Naver Line Clova reqest & response module",
+  "description": "Naver Line Clova request & response module",
   "main": "index.js",
   "scripts": {
     "test": "node index.js"
@@ -14,7 +14,8 @@
     "clova",
     "smart speaker",
     "naver",
-    "line"
+    "line",
+    "clovaJS"
   ],
   "author": "LunaStratos",
   "license": "MIT",

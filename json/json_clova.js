@@ -1,6 +1,8 @@
 'use strict';
 
-
+/*
+response moduel
+ */
 module.exports = (str,endField  = {}) =>{
   let JsonField = {
     "version": "0.1.0",
