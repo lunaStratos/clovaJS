@@ -48,7 +48,7 @@ Interaction에 설정한 Intent의 이름을 얻을수 있습니다.
 
 #### Intent의 type을 얻을때 ####
 
-	const type = clova.token()
+	const type = clova.type()
 	// type이 나옵니다.
 
 시작(LaunchRequest), 종료(SessionEndedRequest) 그리고 일반 대화(IntentRequest)의 구분을 하는 부분입니다.
