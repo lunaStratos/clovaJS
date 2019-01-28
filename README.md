@@ -1,5 +1,3 @@
-
-
 ## Clova JS ##
 
 Naver CLOVA™의 request 와 response 더욱 쉽게 하기 위해서 만든 npm입니다.
@@ -15,7 +13,7 @@ CLOVA™ Extension 개발시 사용이 가능한 npm이며, Naver CLOVA™의 �
 * 본 npm은 비공식입니다. CLOVA™의 브랜드는 네이버주식회사(NAVER Corp) 있습니다.
 
 
-## 버전관리 ##
+## Version History ##
 
 * 0.1.0 : 최초 버전, Text input or output
 
