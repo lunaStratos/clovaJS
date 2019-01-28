@@ -1,6 +1,6 @@
 
 
-exports.module = function (valueName, req) {
+module.exports = function (valueName, req) {
 
   let value = '';
   if (req.body.request.intent.hasOwnProperty('slots')) {
@@ -17,7 +17,7 @@ exports.module = function (valueName, req) {
        */
       const slots = req.body.request.intent.slots
       //파라메터의 이름 찾기
-      if (parameters.hasOwnProperty(valueName)) {
+      if (slots.hasOwnProperty(valueName)) {
         value = slots[valueName].value
       } else {
         value = undefined

@@ -12,11 +12,10 @@ const makeJson = require('./json/json_clova.js')
 //프로세스 모듈 분리
 const processGet = require('./processModule/getSlots.js')
 
-module.exports = (request, response = {}) => {
+module.exports = (rq, re = {}) => {
 
-  const req = request
-  const res = response
-
+  const req = rq
+  const res = re
 
   return {
     /**
@@ -68,8 +67,8 @@ module.exports = (request, response = {}) => {
      * 말하면 종료
      * clova.tell("내용") 형태로 사용
      */
-    tell: () => {
-      const jsonResult = makeJson(str, false)
+    tell: (str) => {
+      const jsonResult = makeJson(str, true)
       return res.send(jsonResult)
     },
   }
