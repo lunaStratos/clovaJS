@@ -6,10 +6,10 @@ module.exports = function (valueName, req) {
 
   let value = '';
   if (req.body.request.intent.hasOwnProperty('slots')) {
-    if (Object.keys(req.body.request.intent.slots).length === 0) {
+    if (req.body.request.intent.slots === null) {
       /**
        * 값 없음.
-       * {} 값 방지.
+       * null 값 방지.
        * undefined 출력
        */
       value = undefined

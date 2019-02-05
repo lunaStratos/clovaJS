@@ -3,7 +3,7 @@
 /*
 response moduel
  */
-module.exports = (str,endField  = {}) =>{
+module.exports = (str,lang, endField  = {}) =>{
   let JsonField = {
     "version": "0.1.0",
     "sessionAttributes": {},
@@ -12,7 +12,7 @@ module.exports = (str,endField  = {}) =>{
         "type": "SimpleSpeech",
         "values": {
           "type": "PlainText",
-          "lang": "ko",
+          "lang": lang,
           "value": str
         }
       },
@@ -24,3 +24,9 @@ module.exports = (str,endField  = {}) =>{
   return JsonField;
 
 }
+
+/*
+"en": 영어
+"ja": 일본어
+"ko": 한국
+ */

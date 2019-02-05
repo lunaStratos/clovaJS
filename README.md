@@ -1,4 +1,21 @@
+
 ## Clova JS ##
+
+[English]
+
+Naver CLOVA ™'s request and response is made easier by npm.
+It is the npm that can be used for the development of CLOVA ™ Extension. I made it by referring to Naver CLOVA ™ Reference [Document] (https://developers.Clova.co.kr/docs/).
+
+The characteristics of this npm are as follows.
+
+* You do not need to create a response json.
+* When you enter a value, it is automatically sent to the response.
+* Value can be obtained simply by entering the key name of the parameter.
+* Resolving the complexity of parsing Json in request.
+
+* This npm is informal. The brand of CLOVA ™ is NAVER Corp.
+
+[Korean]
 
 Naver CLOVA™의 request 와 response 더욱 쉽게 하기 위해서 만든 npm입니다.
 CLOVA™ Extension 개발시 사용이 가능한 npm이며, Naver CLOVA™의 레퍼런스 [문서](https://developers.Clova.co.kr/docs/)를 참조하여 만들었습니다.
@@ -12,97 +29,150 @@ CLOVA™ Extension 개발시 사용이 가능한 npm이며, Naver CLOVA™의 �
 
 * 본 npm은 비공식입니다. CLOVA™의 브랜드는 네이버주식회사(NAVER Corp) 있습니다.
 
+[Japanese]
+
+LINE CLOVA™のrequestとresponseさらに容易にするために作成されたnpmです。
+CLOVA™Extension開発時に使用が可能なnpmであり、LINE CLOVA™のリファレンスドキュメント（https://clova-developers.line.biz/guide/）を参照して、作成しました。
+
+本npmの特徴は次のとおりです。
+
+* response jsonを作成する必要がありません。
+* 値を挿入すると自動的にresponseに入れ送られます。
+* パラメータをkeyの名前を入力すれば簡単にValueを得ることができます。
+* requestのJsonをparsingする複雑解決します。
+
+* 本npmは非公式です。CLOVA™のブランドは、株式会社LINE（LINE Corp）があります。
 
 ## Version History ##
 
-* 0.1.0 : 최초 버전, Text input or output
+* 0.1.1 : Multi language support. (support Japan)
+* 0.1.0 A : First version. PlainText.
 
-## 사용방법 ##
+## How to use ##
+
+* 1. First, npm install clovajs --save
 
     npm install clovajs --save
 
-우선 **npm**을 설치합니다. 그리고 나서 **require**을 합니다.
+* 2. And write require('clovajs') like below text
 
-    const clovaApp = require('clovajs');
+    const clovaApp = require('clovajs').ko; //korean
+    const clovaApp = require('clovajs').ja; //japanese
 
-그리고 나서
+Must select ko or ja. If not select, it response to  korean lang Json mode.
+뒤에 언어를 선택해야 합니다. 선택하지 않았다면 한국어 response로 보냅니다.
+
+> 현재로서는 언어를 구분할수 있는 방법이 없기 때문에 이런 방식을 사용하였지만, 언어를 구분할수 있는 response가 나온다면 지원할 예정입니다.
+
+* 3. Put the request and response in the following code and use the clova function.
 
     const clova = clovaApp(reqest, response);
 
-**request**와 **response**값을 **clovajs**안에 넣으면 사용이 가능합니다.
+### Request ###
 
-### Request 에서 값 얻기 ###
-
-#### slots의 value를 얻을때 ###
+#### Get value in slots ###
 
 	const value1 = clova.get("SlotsName")
 
-slots에서 지정된 "SlotsName"의 **Value**가 나옵니다. 만약 값이 없다면 **undefined**가 나옵니다.
+If not have value, output **undefined**.
+만약 값이 없다면 **undefined** 가 나옵니다.
+もし値がない場合は **undefined** が出ます。
 
-#### Intent의 name을 얻을때 ####
+#### Get Intent' Name ####
 
 	const name = clova.name("intent.actionName")
-	//return :ActionName }
+	//return String ActionName
 
-Interaction에 설정한 Intent의 이름을 얻을수 있습니다.
-
-#### Intent의 type을 얻을때 ####
+#### Get Intent's Type ####
 
 	const type = clova.type()
-	// type이 나옵니다.
+	// return String Type name
 
-시작(LaunchRequest), 종료(SessionEndedRequest) 그리고 일반 대화(IntentRequest)의 구분을 하는 부분입니다.
+Get one in Three type
+ - Start(LaunchRequest)
+ - EXIT(SessionEndedRequest)
+ - Custom conversation(IntentRequest)
 
-### 새로운 방문자인지 확인 ###
+### Visit New or before use ###
 
 	const new = clova.new()
-	// true or false
+	// return Boolean : true or false
 
-Boolean 형태로 나옵니다.
-
-###  Slots의 값을 얻을때 ###
+###  Get Slots's Value ###
 
 	 const value = clova.get('slotsName')
+   //return Slot Value
+   //If not have slot value, return undefined
 
-###  이어나가는 대화를 하려고 할때  ###
+
+###  Get application id ###
+
+    const applicationId = clova.application()
+    //return com.domain.name
+
+###  Get display Size ###
+
+    const displaySize = clova.displaySize()
+    //return String
+
+###  Get landscape mode ###
+
+    const orientation = clova.orientation()
+    //return String mode (ex: landscape)
+
+###  Get content Layer ###
+
+    const contentLayer = clova.contentLayer()
+    const width = contentLayer.width
+    const height = contentLayer.height
+    // return json. It have width and height.
+    // Width and Height have Int number
+
+### Response ###
+
+###  Common conversations  ###
 
 	let speechText = 'Day before yesterday I saw a rabbit, and yesterday a deer, and today, you'
 	clova.ask(speechText)
-	//res send가 자동으로 됩니다.
+	//Auto response.send(json)
 
-res.send()를 모듈에서 구현하고 있어, 따로 할 필요가 없습니다.
+### End Conversation ###
 
-###   대화를 종료하려고 할때  ###
-
-	let speechText = 'The Quick Brown Fox Jumps Over The Lazy Dog'
+	let speechText = 'The Quick Brown Fox Jumps Over The Lazy Dog.'
 	clova.tell(speechText)
-	//res send가 자동으로 됩니다.
+	//Auto response.send(json)
 
-res send가 자동으로 되며, 대화가 종료되어 챗봇이 끝납니다.
+Chat bot exit.
 
-### Express 엔진에서 사용방법 ###
-
-
+### NodeJS Express Engine Sample ###
 
     const express = require('express')
     const clovaApp = require('clovajs');
     const app = express()
 
-    app.get('/textSay',  (req, res) => {
+    app.get('/say',  (req, res) => {
       const clova = clovaApp(req, res);
       let speechText = 'Day before yesterday I saw a rabbit, and yesterday a deer, and today, you'
       clova.say(speechText);
     })
 
-    app.get('/getslots',  (req, res) => {
+    app.get('/getSlots',  (req, res) => {
       const clova = clovaApp(req, res);
       let value  = clova.get('slotsName')
-      clova.say('받은 값은 ' + value);
+      clova.say('Get slots ' + value);
+    })
+
+    app.get('/tell',  (req, res) => {
+      const clova = clovaApp(req, res);
+      let speechText = 'Day before yesterday I saw a rabbit, and yesterday a deer, and today, you'
+      clova.tell(speechText);
     })
 
     app.listen(3000)
+    console.log('Start Server')
 
-### GCP cloud Functions 에서 사용방법 ###
+
+### Use Google cloud Functions Sample ###
 
     'use strict';
     const clovaApp = require('clovajs')
@@ -131,7 +201,7 @@ res send가 자동으로 되며, 대화가 종료되어 챗봇이 끝납니다.
         clova.ask(displayText)
       }
 
-      // fallback
+      // conversation
       function custom_func() {
         let displayText = 'Champions are made from something they have deep inside them - a desire, a dream, a vision.'
         clova.ask(displayText)
@@ -177,7 +247,7 @@ res send가 자동으로 되며, 대화가 종료되어 챗봇이 끝납니다.
            */
         case INTENT_REQUEST:
           intent_select()
-          //종료 기능
+          //EXIT function
           break;
           /*
           End flow
@@ -197,6 +267,6 @@ res send가 자동으로 되며, 대화가 종료되어 챗봇이 끝납니다.
 
 https://github.com/lunaStratos/ClovaJS
 
-## 문의사항 ##
+## Question ##
 
-**Dev.LunaStratos@gmail.com** 으로 메일 보내주시면 됩니다.
+mail to **Dev.LunaStratos@gmail.com**
